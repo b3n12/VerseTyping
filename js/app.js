@@ -830,7 +830,7 @@
   // =======================================================================
   function savePrefs() {
     try {
-      localStorage.setItem("versetype", JSON.stringify({
+      localStorage.setItem("versetype-v2", JSON.stringify({
         mode: state.mode, time: state.time, words: state.words,
         punctuation: state.punctuation, numbers: state.numbers, theme: state.theme,
         best: loadPrefs().best || 0,
@@ -838,7 +838,7 @@
     } catch (_) {}
   }
   function loadPrefs() {
-    try { return JSON.parse(localStorage.getItem("versetype")) || {}; }
+    try { return JSON.parse(localStorage.getItem("versetype-v2")) || {}; }
     catch (_) { return {}; }
   }
 
