@@ -1,14 +1,14 @@
-/* ===== Theme variables (default: serika dark) ===== */
+/* ===== Theme variables (default: verdant) ===== */
 :root {
-  --bg: #323437;
-  --main: #e2b714;
-  --caret: #e2b714;
-  --sub: #646669;
-  --sub-alt: #2c2e31;
-  --text: #d1d0c5;
-  --error: #ca4754;
-  --error-extra: #7e2a33;
-  --colorful-error: #ca4754;
+  --bg: #111c17;
+  --main: #3ddc84;
+  --caret: #3ddc84;
+  --sub: #4a7c62;
+  --sub-alt: #0d1812;
+  --text: #c8ddd0;
+  --error: #e05c5c;
+  --error-extra: #7a2828;
+  --colorful-error: #e05c5c;
 
   --font-mono: "Roboto Mono", "Lexend Deca", monospace;
   --font-ui: "Lexend Deca", "Roboto Mono", sans-serif;

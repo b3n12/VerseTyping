@@ -1,6 +1,7 @@
 /* Color themes, mirroring the look of popular MonkeyType themes.
    Each: bg, main (accent), caret, sub, subAlt, text, error, errorExtra */
 const THEMES = {
+  "verdant":     { bg:"#111c17", main:"#3ddc84", caret:"#3ddc84", sub:"#4a7c62", subAlt:"#0d1812", text:"#c8ddd0", error:"#e05c5c", errorExtra:"#7a2828" },
   "serika dark": { bg:"#323437", main:"#e2b714", caret:"#e2b714", sub:"#646669", subAlt:"#2c2e31", text:"#d1d0c5", error:"#ca4754", errorExtra:"#7e2a33" },
   "serika":      { bg:"#e1e1e3", main:"#e2b714", caret:"#e2b714", sub:"#aaaeb3", subAlt:"#cccfd4", text:"#323437", error:"#da3333", errorExtra:"#791717" },
   "dracula":     { bg:"#282a36", main:"#f8f8f2", caret:"#f8f8f2", sub:"#6272a4", subAlt:"#21222c", text:"#bd93f9", error:"#ff5555", errorExtra:"#ff79c6" },

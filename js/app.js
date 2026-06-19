@@ -15,7 +15,7 @@
     words: 25,
     punctuation: false,
     numbers: false,
-    theme: "serika dark",
+    theme: "verdant",
   };
 
   // ----- State -----
