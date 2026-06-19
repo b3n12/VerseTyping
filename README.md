@@ -1,7 +1,6 @@
-# versetype
+# VerseType
 
-A minimalistic, customizable typing test — a faithful, dependency‑free clone of
-[MonkeyType](https://monkeytype.com/) built with vanilla HTML/CSS/JS.
+A minimalistic, customizable typing test built with vanilla HTML/CSS/JS.
 
 ![serika dark theme](https://img.shields.io/badge/theme-serika%20dark-e2b714)
 
