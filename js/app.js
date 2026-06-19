@@ -10,7 +10,7 @@
   const WORD_OPTIONS = [10, 25, 50, 100];
 
   const defaults = {
-    mode: "time",        // time | words | quote
+    mode: "quote",       // time | words | quote
     time: 30,
     words: 25,
     punctuation: false,
