@@ -159,7 +159,7 @@ body {
 /* ===== Verse reference (quote mode) ===== */
 .quote-source {
   font-family: var(--font-mono);
-  font-size: 1rem;
+  font-size: var(--type-size);
   font-weight: 500;
   color: var(--main);
   letter-spacing: .02em;
