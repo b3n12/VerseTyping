@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VerseType — a minimalistic typing test</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- hidden input captures typing / mobile keyboard -->
+  <input id="capture" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="1" />
+
+  <div id="app">
+    <!-- ===== Header ===== -->
+    <header class="top">
+      <div class="logo" id="logo" title="restart">
+        <svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20 5H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zM6 9h2v2H6V9zm0 4h2v2H6v-2zm4-4h2v2h-2V9zm0 4h2v2h-2v-2zm6 2h-4v-2h4v2zm0-4h-2V9h2v2zm2 4h-2v-2h2v2z"/>
+        </svg>
+        <div class="logo-text">
+          <span class="logo-top">Verse<span class="accent">Type</span></span>
+          <span class="logo-sub">type to live</span>
+        </div>
+      </div>
+      <nav class="top-nav">
+        <button class="nav-btn" id="nav-restart" title="restart test">
+          <svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8z"/></svg>
+        </button>
+        <button class="nav-btn" id="nav-leaderboard" title="leaderboard">
+          <svg viewBox="0 0 24 24"><path d="M5 21V9H1v12h4zm6 0V3H7v18h4zm6 0V11h-4v10h4zm6 0v-6h-4v6h4z"/></svg>
+        </button>
+        <button class="nav-btn" id="nav-theme" title="theme">
+          <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0 0 18c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1-.23-.27-.38-.62-.38-1 0-.83.67-1.5 1.5-1.5H16a5 5 0 0 0 5-5c0-4.42-4.03-8-9-8zm-5.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3-4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3 4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>
+        </button>
+        <button class="nav-btn" id="nav-info" title="about">
+          <svg viewBox="0 0 24 24"><path d="M11 7h2v2h-2V7zm0 4h2v6h-2v-6zm1-9a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"/></svg>
+        </button>
+      </nav>
+    </header>
+
+    <!-- ===== Main ===== -->
+    <main class="main">
+      <!-- config bar -->
+      <div class="config" id="config">
+        <div class="config-group">
+          <button class="config-btn" data-mod="punctuation"><span class="ico">@</span>punctuation</button>
+          <button class="config-btn" data-mod="numbers"><span class="ico">#</span>numbers</button>
+        </div>
+        <div class="config-sep"></div>
+        <div class="config-group">
+          <button class="config-btn" data-mode="time"><span class="ico">⏱</span>time</button>
+          <button class="config-btn" data-mode="words"><span class="ico">A</span>words</button>
+          <button class="config-btn" data-mode="quote"><span class="ico">❝</span>quote</button>
+        </div>
+        <div class="config-sep"></div>
+        <div class="config-group" id="amount-group"></div>
+      </div>
+
+      <!-- live stats while typing -->
+      <div class="livebar" id="livebar">
+        <span id="live-counter">0</span>
+      </div>
+
+      <!-- verse reference (quote mode) -->
+      <div class="quote-source" id="quote-source" hidden></div>
+
+      <!-- typing area -->
+      <section class="type-wrap" id="type-wrap">
+        <div class="caret" id="caret"></div>
+        <div class="words" id="words"></div>
+        <div class="focus-note" id="focus-note">
+          <span>click here or press any key to focus</span>
+        </div>
+      </section>
+
+      <!-- restart -->
+      <div class="restart-row">
+        <button class="restart-btn" id="restart-btn" title="restart test  ·  tab + enter">
+          <svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8z"/></svg>
+        </button>
+      </div>
+
+      <!-- ===== Results ===== -->
+      <section class="results" id="results" hidden>
+        <div class="results-top">
+          <div class="results-headline">
+            <div class="big-stat">
+              <div class="label">wpm</div>
+              <div class="value" id="r-wpm">0</div>
+            </div>
+            <div class="big-stat">
+              <div class="label">acc</div>
+              <div class="value" id="r-acc">0%</div>
+            </div>
+          </div>
+          <div class="results-chart">
+            <canvas id="chart" width="900" height="260"></canvas>
+          </div>
+        </div>
+        <div class="results-grid">
+          <div class="small-stat"><div class="label">test type</div><div class="value" id="r-type">—</div></div>
+          <div class="small-stat"><div class="label">raw</div><div class="value" id="r-raw">0</div></div>
+          <div class="small-stat"><div class="label">characters</div><div class="value" id="r-chars" title="correct / incorrect / extra / missed">0/0/0/0</div></div>
+          <div class="small-stat"><div class="label">consistency</div><div class="value" id="r-consistency">0%</div></div>
+          <div class="small-stat"><div class="label">time</div><div class="value" id="r-time">0s</div></div>
+        </div>
+        <div class="results-actions">
+          <button class="restart-btn" id="results-restart" title="next test  ·  tab + enter">
+            <svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8z"/></svg>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="bottom">
+      <div class="keytips">
+        <div class="keytip"><span class="key">tab</span><span class="key">enter</span> - restart test</div>
+        <div class="keytip"><span class="key">esc</span> - command line</div>
+      </div>
+      <div class="footer-right">
+        <button class="footer-link" id="theme-name">serika dark</button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- theme / command palette -->
+  <div class="palette-overlay" id="palette-overlay" hidden>
+    <div class="palette" id="palette">
+      <input class="palette-input" id="palette-input" placeholder="type to search..." autocomplete="off" />
+      <div class="palette-list" id="palette-list"></div>
+    </div>
+  </div>
+
+  <script src="js/words.js"></script>
+  <script src="js/themes.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
