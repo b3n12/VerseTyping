@@ -1,5 +1,5 @@
 /* =========================================================================
-   versetype — a minimalistic typing test (MonkeyType-style clone)
+   versetyping — a minimalistic typing test (MonkeyType-style clone)
    Vanilla JS, no dependencies.
    ========================================================================= */
 (() => {
@@ -817,7 +817,7 @@
   $("#nav-theme").addEventListener("click", openPalette);
   $("#theme-name").addEventListener("click", openPalette);
   $("#nav-info").addEventListener("click", () => {
-    alert("VerseType — a minimalistic MonkeyType-style typing test.\n\n• tab + enter: restart\n• esc: theme picker\n• click the words to focus\n\nBuilt with vanilla JS.");
+    alert("VerseTyping — a minimalistic MonkeyType-style typing test.\n\n• tab + enter: restart\n• esc: theme picker\n• click the words to focus\n\nBuilt with vanilla JS.");
   });
   $("#nav-leaderboard").addEventListener("click", () => {
     alert("Leaderboards are a stub in this clone. Your best WPM this session: " + (loadPrefs().best || 0));
@@ -830,7 +830,7 @@
   // =======================================================================
   function savePrefs() {
     try {
-      localStorage.setItem("versetype-v2", JSON.stringify({
+      localStorage.setItem("versetyping-v2", JSON.stringify({
         mode: state.mode, time: state.time, words: state.words,
         punctuation: state.punctuation, numbers: state.numbers, theme: state.theme,
         best: loadPrefs().best || 0,
@@ -838,7 +838,7 @@
     } catch (_) {}
   }
   function loadPrefs() {
-    try { return JSON.parse(localStorage.getItem("versetype-v2")) || {}; }
+    try { return JSON.parse(localStorage.getItem("versetyping-v2")) || {}; }
     catch (_) { return {}; }
   }
 

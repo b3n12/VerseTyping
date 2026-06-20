@@ -1,4 +1,4 @@
-# VerseType
+# VerseTyping
 
 A minimalistic, customizable typing test built with vanilla HTML/CSS/JS.
 
