@@ -2,7 +2,9 @@
 
 A minimalistic, customizable typing test built with vanilla HTML/CSS/JS.
 
-![serika dark theme](https://img.shields.io/badge/theme-serika%20dark-e2b714)
+**Live:** https://b3n12.github.io/VerseTyping/
+
+![verdant theme](https://img.shields.io/badge/theme-verdant-3ddc84)
 
 ## Features
 
