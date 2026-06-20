@@ -477,8 +477,65 @@
     if (state.numbers) typeLabel += " · numbers";
     $("#r-type").textContent = typeLabel;
 
+    renderReview();
+
     resultsEl.hidden = false;
     drawChart();
+  }
+
+  // Rebuild the typed text on the results page, highlighting exact errors.
+  function renderReview() {
+    const container = $("#review-text");
+    const refEl = $("#review-ref");
+    container.innerHTML = "";
+
+    // Show the verse reference for quote mode.
+    if (state.mode === "quote" && state.quoteSource) {
+      refEl.textContent = state.quoteSource;
+      refEl.hidden = false;
+    } else {
+      refEl.hidden = true;
+    }
+
+    state.targetWords.forEach((target, wi) => {
+      // What the user actually typed for this word (committed, or the
+      // in-progress buffer for a word left unfinished when time ran out).
+      let typed;
+      if (state.typed[wi] !== undefined) typed = state.typed[wi];
+      else if (wi === state.wordIndex) typed = state.inputBuf;
+      else typed = undefined; // word never reached
+
+      const wEl = document.createElement("span");
+      wEl.className = "rword";
+      const len = Math.max(target.length, typed ? typed.length : 0);
+
+      for (let i = 0; i < len; i++) {
+        const span = document.createElement("span");
+        span.className = "rl";
+        if (typed === undefined || i >= typed.length) {
+          // not typed — show the original letter dimmed
+          span.classList.add("missed");
+          span.textContent = target[i] || "";
+        } else if (i >= target.length) {
+          // extra character the user typed beyond the word
+          span.classList.add("extra");
+          span.textContent = typed[i];
+        } else if (typed[i] === target[i]) {
+          span.classList.add("correct");
+          span.textContent = target[i];
+        } else {
+          // wrong character — keep the original letter, mark it red
+          span.classList.add("incorrect");
+          span.textContent = target[i];
+        }
+        wEl.appendChild(span);
+      }
+
+      container.appendChild(wEl);
+      if (wi < state.targetWords.length - 1) {
+        container.appendChild(document.createTextNode(" "));
+      }
+    });
   }
 
   // =======================================================================
