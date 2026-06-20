@@ -435,8 +435,14 @@
     const wpm = Math.round((correct / 5) / (elapsed / 60));
     const raw = Math.round((state.keystrokes / 5) / (elapsed / 60));
 
-    const totalTyped = state.correctChars + state.incorrectChars + state.extraChars;
-    const acc = totalTyped ? Math.round((state.correctChars / (state.correctChars + state.incorrectChars + state.extraChars)) * 100) : 100;
+    // Accuracy is keystroke-based: every wrong key counts, even if later
+    // corrected (matches MonkeyType). The character breakdown below reflects
+    // the final text instead.
+    // Use floor so 100% only ever shows for a genuinely flawless run
+    // (rounding could display 100% even with a stray error in a long verse).
+    const acc = state.keystrokes
+      ? Math.floor(((state.keystrokes - state.errorKeystrokes) / state.keystrokes) * 100)
+      : 100;
 
     // consistency = coefficient of variation of raw wpm samples
     const consistency = calcConsistency();
